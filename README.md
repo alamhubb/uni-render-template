@@ -44,6 +44,54 @@ npm install
 npm run dev:h5
 ```
 
+### 方式三：在现有项目中安装
+
+如果你已有 UniApp 项目，需要手动完成以下配置：
+
+#### 1. 安装依赖
+
+```bash
+# 安装核心依赖
+npm install uni-render vite-plugin-uni-render
+
+# 或使用 pnpm
+pnpm add uni-render vite-plugin-uni-render
+```
+
+#### 2. 配置 vite.config.ts
+
+```typescript
+import { defineConfig } from 'vite'
+import uni from '@dcloudio/vite-plugin-uni'
+import { uniRender } from 'vite-plugin-uni-render'
+
+export default defineConfig({
+  plugins: [
+    // ⚠️ 必须放在 uni() 之前
+    uniRender(),
+    uni()
+  ]
+})
+```
+
+#### 3. 配置 pages.json（必须）
+
+⚠️ **重要**：必须在 `pages.json` 中配置 `easycom`，否则 `<render-component>` 组件无法被识别：
+
+```json
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "render-component": "uni-render/src/components/RenderComponent"
+    }
+  },
+  "pages": [
+    // ... 你的页面配置
+  ]
+}
+```
+
 ## 📁 项目结构
 
 ```

@@ -67,7 +67,6 @@ import { uniRender } from 'vite-plugin-uni-render'
 
 export default defineConfig({
   plugins: [
-    // ⚠️ 必须放在 uni() 之前
     uniRender(),
     uni()
   ]
@@ -190,7 +189,6 @@ import uni from "@dcloudio/vite-plugin-uni"
 
 export default defineConfig({
   plugins: [
-    // ⚠️ uniRender 必须放在 uni() 之前
     uniRender(),
     uni()
   ]
